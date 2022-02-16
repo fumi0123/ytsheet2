@@ -268,6 +268,31 @@ function checkRace(){
       raceAbilityDef += 2;
     }
     document.getElementById("race-ability-def-name").innerHTML = 'トロールの体躯';
+  }   
+  else if(race === 'バルレ'){
+    raceAbilityDef = 1;
+    document.getElementById("race-ability-def-name").innerHTML = '軟体体質';
+  }
+  else if(race === 'マシーナリー'){
+    raceAbilityDef = 1;
+    document.getElementById("race-ability-def-name").innerHTML = '鉄の装甲';
+  }
+  else if(race === 'カマウェト'){
+    raceAbilityDef = 3;
+    document.getElementById("race-ability-def-name").innerHTML = '海竜の身体';
+  }
+  else if(race === 'アダンダラ'){
+    raceAbilityMp = 0;
+    if(level >= 6){
+      raceAbilityMp += 5;
+    }
+    if(level >= 11){
+      raceAbilityMp += 5;
+    }
+  }
+  else if(race === 'ドラゴン'){
+    raceAbilityDef = 3;
+    document.getElementById("race-ability-def-name").innerHTML = '竜の身体';
   }
   
   let ability = '';
@@ -386,6 +411,11 @@ function calcStt() {
   else if (race === 'ウィークリング（ミノタウロス）') sttStr += 3;
   else if (race === 'ウィークリング（バジリスク）')   sttInt += 3;
   else if (race === 'ウィークリング（マーマン）')     sttMnd += 3;
+  else if (race === 'ウィークリング（コボルド）') {
+    sttDex += 3;
+    sttStr -= 4;
+    sttVit -= 4;
+  }
   
   document.getElementById("stt-dex-value").innerHTML = sttDex;
   document.getElementById("stt-agi-value").innerHTML = sttAgi;
