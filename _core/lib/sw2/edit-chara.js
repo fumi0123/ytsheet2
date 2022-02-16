@@ -206,6 +206,7 @@ function changeRace(){
 // 種族チェック ----------------------------------------
 let raceAbilityDef       = 0;
 let raceAbilityMp        = 0;
+let raceAbilityVitResist = 0;
 let raceAbilityMndResist = 0;
 let raceAbilityMagicPower= 0;
 function checkRace(){
@@ -283,6 +284,8 @@ function checkRace(){
   }
   else if(race === 'アダンダラ'){
     raceAbilityMp = 0;
+    raceAbilityVitResist = 1;
+    raceAbilityMndResist = 1;
     if(level >= 6){
       raceAbilityMp += 5;
     }
@@ -978,7 +981,7 @@ function calcSubStt() {
   
   const vitResistBase = level + bonusVit;
   const mndResistBase = level + bonusMnd;
-  const vitResistAutoAdd = 0 + (feats['抵抗強化'] || 0) + seekerResistAdd;
+  const vitResistAutoAdd = raceAbilityVitResist + (feats['抵抗強化'] || 0) + seekerResistAdd;
   const mndResistAutoAdd = raceAbilityMndResist + (feats['抵抗強化'] || 0) + seekerResistAdd;
   document.getElementById("vit-resist-base").innerHTML = vitResistBase;
   document.getElementById("mnd-resist-base").innerHTML = mndResistBase;

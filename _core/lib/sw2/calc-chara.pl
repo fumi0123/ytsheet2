@@ -272,6 +272,8 @@ sub data_calc {
   }
   elsif($pc{'race'} eq 'アダンダラ'){
     $pc{'raceAbilityMp'} = 0;
+    $pc{'raceAbilityVitResist'} = 1;
+    $pc{'raceAbilityMndResist'} = 1;
     if($pc{'level'} >= 6){
       $pc{'raceAbilityMp'} += 5;
     }
@@ -437,7 +439,7 @@ sub data_calc {
   ### サブステータス --------------------------------------------------
   ## 生命抵抗力
   $pc{'vitResistBase'} = $st{'LvD'};
-  $pc{'vitResistAddTotal'} = s_eval($pc{'vitResistAdd'}) + $pc{'resistEnhance'} + $pc{'seekerAbilityResist'};
+  $pc{'vitResistAddTotal'} = s_eval($pc{'vitResistAdd'}) + $pc{'raceAbilityVitResist'} + $pc{'resistEnhance'} + $pc{'seekerAbilityResist'};
   $pc{'vitResistTotal'}  = $pc{'vitResistBase'} + $pc{'vitResistAddTotal'};
   ## 精神抵抗力
   $pc{'mndResistBase'} = $st{'LvF'};
