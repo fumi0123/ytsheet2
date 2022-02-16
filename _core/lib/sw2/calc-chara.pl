@@ -261,6 +261,27 @@ sub data_calc {
       $pc{'raceAbility'} =~ s/［魔物化］/［剣の託宣／復活魔物化］/;
     }
   }
+  elsif($pc{'race'} eq 'バルレ'){
+    $pc{'raceAbilityDef'} = 1;
+  }
+  elsif($pc{'race'} eq 'マシーナリー'){
+    $pc{'raceAbilityDef'} = 1;
+  }
+  elsif($pc{'race'} eq 'カマウェト'){
+    $pc{'raceAbilityDef'} = 3;
+  }
+  elsif($pc{'race'} eq 'アダンダラ'){
+    $pc{'raceAbilityMp'} = 0;
+    if($pc{'level'} >= 6){
+      $pc{'raceAbilityMp'} += 5;
+    }
+    if($pc{'level'} >= 11){
+      $pc{'raceAbilityMp'} += 5;
+    }
+  }
+  elsif($pc{'race'} eq 'ドラゴン'){
+    $pc{'raceAbilityDef'} = 3;
+  }
 
   ### 能力値計算  --------------------------------------------------
   ## 成長
@@ -304,6 +325,11 @@ sub data_calc {
     $pc{'sttStr'} += 3 if $pc{'race'} eq 'ウィークリング（ミノタウロス）';
     $pc{'sttInt'} += 3 if $pc{'race'} eq 'ウィークリング（バジリスク）';
     $pc{'sttMnd'} += 3 if $pc{'race'} eq 'ウィークリング（マーマン）';
+    if($pc{'race'} eq 'ウィークリング（コボルド）'){
+      $pc{'sttDex'} += 3
+      $pc{'sttStr'} -= 4
+      $pc{'sttVit'} -= 4
+    }
 
   ## ボーナス算出
   $pc{'bonusDex'} = int(($pc{'sttDex'} + $pc{'sttAddA'}) / 6);
