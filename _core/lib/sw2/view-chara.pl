@@ -707,6 +707,30 @@ if(!$pc{'forbiddenMode'}){
       "DEF"  => $pc{'raceAbilityDef'},
     } );
   }
+  elsif($pc{'race'} eq 'バルレ') {
+    push(@evasion, {
+      "NAME" => "［軟体体質］",
+      "DEF"  => $pc{'raceAbilityDef'},
+    } );
+  }
+  elsif($pc{'race'} eq 'マシーナリー') {
+    push(@evasion, {
+      "NAME" => "［鉄の身体］",
+      "DEF"  => $pc{'raceAbilityDef'},
+    } );
+  }
+  elsif($pc{'race'} eq 'カマウェト') {
+    push(@evasion, {
+      "NAME" => "［水竜の身体］",
+      "DEF"  => $pc{'raceAbilityDef'},
+    } );
+  }
+  elsif($pc{'race'} eq 'ドラゴン') {
+    push(@evasion, {
+      "NAME" => "［竜の身体］",
+      "DEF"  => $pc{'raceAbilityDef'},
+    } );
+  }
   if($pc{'lvSeeker'}) {
     push(@evasion, {
       "NAME" => "求道者：防護点上昇",

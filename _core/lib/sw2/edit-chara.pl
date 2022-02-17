@@ -950,7 +950,7 @@ print <<"HTML";
                 <td>―</td>
               </tr>
               <tr id="race-ability-def"@{[ display $pc{'raceAbilityDef'} ]}>
-                <td id="race-ability-def-name">［@{[ $pc{'race'} eq 'リルドラケン' ? '鱗の皮膚':$pc{'race'} eq 'フロウライト'?'晶石の身体':$pc{'race'} eq 'ダークトロール'?'トロールの体躯':'']}］</td>
+                <td id="race-ability-def-name">［@{[ $pc{'race'} eq 'リルドラケン' ? '鱗の皮膚':$pc{'race'} eq 'フロウライト'?'晶石の身体':$pc{'race'} eq 'ダークトロール'?'トロールの体躯':$pc{'race'} eq 'バルレ' ? '軟体体質':$pc{'race'} eq 'マシーナリー' ? '鉄の身体':$pc{'race'} eq 'カマウェト' ? '水竜の身体':$pc{'race'} eq 'ドラゴン' ? '竜の身体':'']}］</td>
                 <td>―</td>
                 <td>―</td>
                 <td id="race-ability-def-value">$pc{'raceAbilityDef'}</td>
@@ -1649,6 +1649,8 @@ print <<"HTML";
     <option value="妖精語">
     <option value="海獣語">
     <option value="ヴァルグ語">
+    <option value="ルナール語">
+    <option value="ブレロー語">
     <option value="汎用蛮族語">
     <option value="妖魔語">
     <option value="巨人語">

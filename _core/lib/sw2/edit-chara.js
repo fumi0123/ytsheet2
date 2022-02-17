@@ -206,6 +206,7 @@ function changeRace(){
 // 種族チェック ----------------------------------------
 let raceAbilityDef       = 0;
 let raceAbilityMp        = 0;
+let raceAbilityVitResist = 0;
 let raceAbilityMndResist = 0;
 let raceAbilityMagicPower= 0;
 function checkRace(){
@@ -268,6 +269,33 @@ function checkRace(){
       raceAbilityDef += 2;
     }
     document.getElementById("race-ability-def-name").innerHTML = 'トロールの体躯';
+  }   
+  else if(race === 'バルレ'){
+    raceAbilityDef = 1;
+    document.getElementById("race-ability-def-name").innerHTML = '軟体体質';
+  }
+  else if(race === 'マシーナリー'){
+    raceAbilityDef = 1;
+    document.getElementById("race-ability-def-name").innerHTML = '鉄の装甲';
+  }
+  else if(race === 'カマウェト'){
+    raceAbilityDef = 3;
+    document.getElementById("race-ability-def-name").innerHTML = '海竜の身体';
+  }
+  else if(race === 'アダンダラ'){
+    raceAbilityMp = 0;
+    raceAbilityVitResist = 1;
+    raceAbilityMndResist = 1;
+    if(level >= 6){
+      raceAbilityMp += 5;
+    }
+    if(level >= 11){
+      raceAbilityMp += 5;
+    }
+  }
+  else if(race === 'ドラゴン'){
+    raceAbilityDef = 3;
+    document.getElementById("race-ability-def-name").innerHTML = '竜の身体';
   }
   
   let ability = '';
@@ -386,6 +414,11 @@ function calcStt() {
   else if (race === 'ウィークリング（ミノタウロス）') sttStr += 3;
   else if (race === 'ウィークリング（バジリスク）')   sttInt += 3;
   else if (race === 'ウィークリング（マーマン）')     sttMnd += 3;
+  else if (race === 'ウィークリング（コボルド）') {
+    sttDex += 3;
+    sttStr -= 4;
+    sttVit -= 4;
+  }
   
   document.getElementById("stt-dex-value").innerHTML = sttDex;
   document.getElementById("stt-agi-value").innerHTML = sttAgi;
@@ -948,7 +981,7 @@ function calcSubStt() {
   
   const vitResistBase = level + bonusVit;
   const mndResistBase = level + bonusMnd;
-  const vitResistAutoAdd = 0 + (feats['抵抗強化'] || 0) + seekerResistAdd;
+  const vitResistAutoAdd = raceAbilityVitResist + (feats['抵抗強化'] || 0) + seekerResistAdd;
   const mndResistAutoAdd = raceAbilityMndResist + (feats['抵抗強化'] || 0) + seekerResistAdd;
   document.getElementById("vit-resist-base").innerHTML = vitResistBase;
   document.getElementById("mnd-resist-base").innerHTML = mndResistBase;
